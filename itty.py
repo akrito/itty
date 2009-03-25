@@ -407,11 +407,11 @@ def twisted_adapter(host, port):
     # Experimental (Untested).
     from twisted.application import service, strports
     from twisted.web2 import server, channel, wsgi
-    
+
     ittyResource = wsgi.WSGIResource(handle_request)
     site = server.Site(ittyResource)
     application = service.Application('web')
-    s = strports.service('tcp:%s' % post, channel.HTTPFactory(site))
+    s = strports.service('tcp:%s' % port, channel.HTTPFactory(site))
     s.setServiceParent(application)
 
 
